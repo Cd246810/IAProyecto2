@@ -5,22 +5,24 @@ echo('<br>');
 $turno=htmlspecialchars($_GET["turno"]);
 echo('turno:'.$turno.'<br>');
 $filas=0;
-$columnas=0;
+$columna=0;
 $maximoFilas=8;
 $maximoColumnas=8;
 $arregloFilas=array();
 $arregloFichas=array();
+
+
 for($numeroTemporal=0;$numeroTemporal<count($arregloTemporal);$numeroTemporal++){
-	//$arregloFichas$[$filas][$columnas]=$arregloTemporal[$numeroTemporal];
-	//echo($arregloFichas$[$filas][$columnas]);
+	//$arregloFichas$[$filas][$columna]=$arregloTemporal[$numeroTemporal];
+	//echo($arregloFichas$[$filas][$columna]);
 	$arregloFilas[]=$arregloTemporal[$numeroTemporal];
-	$columnas++;
-	if($columnas>=$maximoColumnas){
+	$columna++;
+	if($columna>=$maximoColumnas){
 		//$filas++;
-		$columnas=0;
-		foreach($arregloFilas as $dato){
+		$columna=0;
+		//foreach($arregloFilas as $dato){
 		//	echo($dato." ");
-		}
+		//}
 		//echo('<br>');
 		$arregloFichas[]=$arregloFilas;
 		$arregloFilas=array();
@@ -36,17 +38,25 @@ foreach($arregloFichas as $datoFila){
 }
 
 function Hijos($arregloFichas,$turno){
-$hijos=0;
-foreach($arregloFichas as $datoFila){
-	echo('<br>');
+	$hijos=0;
+	$filas=0;
+	$columna=0;
+	foreach($arregloFichas as $datoFila){
+		//echo('<br>');
+		$columna=0;
         foreach($datoFila as $dato){
-		echo('<br>Estoy en: '.$dato.' Comparado con: '.$turno);
-		if($dato==$turno){
-			$hijos++;
-		}
+			//echo('<br>Estoy en: '.$dato.' Comparado con: '.$turno);
+			if($dato==$turno){
+				if($fila>2){
+
+				}
+				$hijos++;
+			}
+			$columna++;
         }
-}
-echo('Numero de hijos: '.$hijos);
+        $fila++;
+	}
+	//echo('Numero de hijos: '.$hijos);
 }
 
 Hijos($arregloFichas,$turno);
