@@ -93,7 +93,7 @@ function Hijos($arregloFichas,$turno){
 }
 
 function verticalArriba($arregloFichas, $turno, $fila, $columna){
-	if($arregloFichas[$fila][$columna]!=turno && $arregloFichas[$fila][$columna]!=2){
+	if($arregloFichas[$fila][$columna]!=$turno && $arregloFichas[$fila][$columna]!=2){
 		$fila++;
 		while($fila>=0){
 			if($arregloFichas[$fila][$columna]==$turno){
@@ -109,7 +109,7 @@ function verticalArriba($arregloFichas, $turno, $fila, $columna){
 }
 
 function verticalAbajo($arregloFichas, $turno, $fila, $columna){
-	if($arregloFichas[$fila][$columna]!=turno && $arregloFichas[$fila][$columna]!=2){
+	if($arregloFichas[$fila][$columna]!=$turno && $arregloFichas[$fila][$columna]!=2){
 		$fila++;
 		while($fila<8){
 			if($arregloFichas[$fila][$columna]==$turno){
@@ -125,7 +125,7 @@ function verticalAbajo($arregloFichas, $turno, $fila, $columna){
 }
 
 function horizontalDerecha($arregloFichas, $turno, $fila, $columna){
-	if($arregloFichas[$fila][$columna]!=turno && $arregloFichas[$fila][$columna]!=2){
+	if($arregloFichas[$fila][$columna]!=$turno && $arregloFichas[$fila][$columna]!=2){
 		$columna++;
 		while($columna<8){
 			if($arregloFichas[$fila][$columna]==$turno){
@@ -141,7 +141,7 @@ function horizontalDerecha($arregloFichas, $turno, $fila, $columna){
 }
 
 function horizontalIzquierda($arregloFichas, $turno, $fila, $columna){
-	if($arregloFichas[$fila][$columna]!=turno && $arregloFichas[$fila][$columna]!=2){
+	if($arregloFichas[$fila][$columna]!=$turno && $arregloFichas[$fila][$columna]!=2){
 		$columna++;
 		while($columna>=0){
 			if($arregloFichas[$fila][$columna]==$turno){
