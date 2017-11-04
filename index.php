@@ -83,6 +83,18 @@ function Hijos($arregloFichas,$turno){
 					//	echo ('<br>Se puede mover derecha');
 					//}
 				}
+				if($fila>1 && $columna>1){
+					$nuevaFila=diagonalArribaIzquierda($arregloFichas,$turno,$fila-1,$columna);
+					if($nuevaFila!=-1){
+						echo ('<br>Se puede a mover en diagonal arriba izquierda a la posicion: '.$columna+$nuevaFila-$fila.' '.$nuevaFila);
+					}
+				}
+				if($fila>1 && $columna<6){
+					$nuevaFila=diagonalArribaDerecha($arregloFichas,$turno,$fila-1,$columna);
+					if($nuevaFila!=-1){
+						echo ('<br>Se puede a mover en diagonal arriba derecha a la posicion: '.$columna+$nuevaFila-$fila.' '.$nuevaFila);
+					}
+				}
 				$hijos++;
 			}
 			$columna++;
@@ -155,6 +167,78 @@ function horizontalIzquierda($arregloFichas, $turno, $fila, $columna){
 	}
 	return -1;
 }
+
+function diagonalArribaIzquierda($arregloFichas, $turno, $fila, $columna){
+	if($arregloFichas[$fila][$columna]!=$turno && $arregloFichas[$fila][$columna]!=2){
+		$fila--;
+		$columna--;
+		while($fila>=0 || $columna>=0){
+			if($arregloFichas[$fila][$columna]==$turno){
+				return -1;
+			}
+			if($arregloFichas[$fila][$columna]==2){
+				return $fila;
+			}
+			$fila--;
+			$columna--;
+		}
+	}
+	return -1;
+}//por op aritmetica sacar la columna columna tambien;
+
+function diagonalArribaDerecha($arregloFichas, $turno, $fila, $columna){
+	if($arregloFichas[$fila][$columna]!=$turno && $arregloFichas[$fila][$columna]!=2){
+		$fila--;
+		$columna++;
+		while($fila>=0 || $columna<8){
+			if($arregloFichas[$fila][$columna]==$turno){
+				return -1;
+			}
+			if($arregloFichas[$fila][$columna]==2){
+				return $fila;
+			}
+			$fila--;
+			$columna++;
+		}
+	}
+	return -1;
+}//por op aritmetica sacar la columna columna tambien;
+
+function diagonalAbajoIzquierda($arregloFichas, $turno, $fila, $columna){
+	if($arregloFichas[$fila][$columna]!=$turno && $arregloFichas[$fila][$columna]!=2){
+		$fila++;
+		$columna--;
+		while($fila<8 || $columna>=0){
+			if($arregloFichas[$fila][$columna]==$turno){
+				return -1;
+			}
+			if($arregloFichas[$fila][$columna]==2){
+				return $fila;
+			}
+			$fila++;
+			$columna--;
+		}
+	}
+	return -1;
+}//por op aritmetica sacar la columna columna tambien;
+
+function diagonalAbajoDerecha($arregloFichas, $turno, $fila, $columna){
+	if($arregloFichas[$fila][$columna]!=$turno && $arregloFichas[$fila][$columna]!=2){
+		$fila++;
+		$columna++;
+		while($fila<8 || $columna<8){
+			if($arregloFichas[$fila][$columna]==$turno){
+				return -1;
+			}
+			if($arregloFichas[$fila][$columna]==2){
+				return $fila;
+			}
+			$fila++;
+			$columna++;
+		}
+	}
+	return -1;
+}//por op aritmetica sacar la columna columna tambien;
 
 Hijos($arregloFichas,$turno);
 
