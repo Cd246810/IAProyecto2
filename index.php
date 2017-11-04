@@ -47,8 +47,17 @@ function Hijos($arregloFichas,$turno){
         foreach($datoFila as $dato){
 			//echo('<br>Estoy en: '.$dato.' Comparado con: '.$turno);
 			if($dato==$turno){
-				if($fila>2){
-
+				if($fila>1){
+					echo ('<br>Se puede mover a la izquierda');
+				}
+				if ($fila<6){
+					echo ('<br>Se puede mover a la izquierda');
+				}
+				if($columna>1){
+					echo ('<br>Se puede mover a la izquierda');
+				}
+				if ($columna<6){
+					echo ('<br>Se puede mover a la izquierda');
 				}
 				$hijos++;
 			}
