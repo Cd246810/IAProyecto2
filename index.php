@@ -96,6 +96,9 @@ function verticalArriba($arregloFichas, $turno, $fila, $columna){
 	if($arregloFichas[$fila][$columna]!=turno && $arregloFichas[$fila][$columna]!=2){
 		$fila++;
 		while($fila>=0){
+			if($arregloFichas[$fila][$columna]==$turno){
+				return -1;
+			}
 			if($arregloFichas[$fila][$columna]==2){
 				return $fila;
 			}
@@ -109,6 +112,9 @@ function verticalAbajo($arregloFichas, $turno, $fila, $columna){
 	if($arregloFichas[$fila][$columna]!=turno && $arregloFichas[$fila][$columna]!=2){
 		$fila++;
 		while($fila<8){
+			if($arregloFichas[$fila][$columna]==$turno){
+				return -1;
+			}
 			if($arregloFichas[$fila][$columna]==2){
 				return $fila;
 			}
@@ -122,6 +128,9 @@ function horizontalDerecha($arregloFichas, $turno, $fila, $columna){
 	if($arregloFichas[$fila][$columna]!=turno && $arregloFichas[$fila][$columna]!=2){
 		$columna++;
 		while($columna<8){
+			if($arregloFichas[$fila][$columna]==$turno){
+				return -1;
+			}
 			if($arregloFichas[$fila][$columna]==2){
 				return $columna;
 			}
@@ -135,6 +144,9 @@ function horizontalIzquierda($arregloFichas, $turno, $fila, $columna){
 	if($arregloFichas[$fila][$columna]!=turno && $arregloFichas[$fila][$columna]!=2){
 		$columna++;
 		while($columna>=0){
+			if($arregloFichas[$fila][$columna]==$turno){
+				return -1;
+			}
 			if($arregloFichas[$fila][$columna]==2){
 				return $columna;
 			}
