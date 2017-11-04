@@ -84,13 +84,13 @@ function Hijos($arregloFichas,$turno){
 					//}
 				}
 				if($fila>1 && $columna>1){
-					$nuevaFila=diagonalArribaIzquierda($arregloFichas,$turno,$fila-1,$columna);
+					$nuevaFila=diagonalArribaIzquierda($arregloFichas,$turno,$fila-1,$columna-1);
 					if($nuevaFila!=-1){
 						echo ('<br>Se puede a mover en diagonal arriba izquierda a la posicion: '.($columna+$nuevaFila-$fila).' '.$nuevaFila);
 					}
 				}
 				if($fila>1 && $columna<6){
-					$nuevaFila=diagonalArribaDerecha($arregloFichas,$turno,$fila-1,$columna);
+					$nuevaFila=diagonalArribaDerecha($arregloFichas,$turno,$fila-1,$columna+1);
 					if($nuevaFila!=-1){
 						echo ('<br>Se puede a mover en diagonal arriba derecha a la posicion: '.($columna+$nuevaFila-$fila).' '.$nuevaFila);
 					}
