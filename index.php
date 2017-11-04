@@ -48,15 +48,22 @@ function Hijos($arregloFichas,$turno){
 			//echo('<br>Estoy en: '.$dato.' Comparado con: '.$turno);
 			if($dato==$turno){
 				if($fila>1){
-
-					if($arregloFichas[$fila-1][$columna]!=2 && $arregloFichas[$fila-1][$columna]!=turno && $arregloFichas[$fila-2][$columna]==2){
-						echo ('<br>Se puede mover a la arriba');
+					$nuevaFila=verticalArriba($arregloFichas,$turno,$fila-1,$columna);
+					if($nuevaFila!=-1){
+						echo ('<br>Se puede a mover arriba a la posicion: '.$nuevaFila);
 					}
+					//if($arregloFichas[$fila-1][$columna]!=2 && $arregloFichas[$fila-1][$columna]!=turno && $arregloFichas[$fila-2][$columna]==2){
+					//	echo ('<br>Se puede mover a la arriba');
+					//}
 				}
 				if ($fila<6){
-					if($arregloFichas[$fila+1][$columna]!=2 && $arregloFichas[$fila+1][$columna]!=turno && $arregloFichas[$fila+2][$columna]==2){
-						echo ('<br>Se puede mover a la abajo');
+					$nuevaFila=verticalAbajo($arregloFichas,$turno,$fila+1,$columna);
+					if($nuevaFila!=-1){
+						echo ('<br>Se puede a mover abajo a la posicion: '.$nuevaFila);
 					}
+					//if($arregloFichas[$fila+1][$columna]!=2 && $arregloFichas[$fila+1][$columna]!=turno && $arregloFichas[$fila+2][$columna]==2){
+					//	echo ('<br>Se puede mover a la abajo');
+					//}
 				}
 				if($columna>1){
 					$nuevaColumna=horizontalIzquierda($arregloFichas,$turno,$fila,$columna-1);
@@ -83,6 +90,32 @@ function Hijos($arregloFichas,$turno){
         $fila++;
 	}
 	//echo('Numero de hijos: '.$hijos);
+}
+
+function verticalArriba($arregloFichas, $turno, $fila, $columna){
+	if($arregloFichas[$fila][$columna]!=turno && $arregloFichas[$fila][$columna]!=2){
+		$fila++;
+		while($fila>=0){
+			if($arregloFichas[$fila][$columna]==2){
+				return $fila;
+			}
+			$fila--;
+		}
+	}
+	return -1;
+}
+
+function verticalAbajo($arregloFichas, $turno, $fila, $columna){
+	if($arregloFichas[$fila][$columna]!=turno && $arregloFichas[$fila][$columna]!=2){
+		$fila++;
+		while($fila<8){
+			if($arregloFichas[$fila][$columna]==2){
+				return $fila;
+			}
+			$fila++;
+		}
+	}
+	return -1;
 }
 
 function horizontalDerecha($arregloFichas, $turno, $fila, $columna){
