@@ -64,7 +64,7 @@ function Hijos($arregloFichas,$turno){
 					}
 				}
 				if ($columna<6){
-					$nuevaColumna=horizontalDerecha($arregloFichas,$turno,$fila,$columna+1)
+					$nuevaColumna=horizontalDerecha($arregloFichas,$turno,$fila,$columna+1);
 					if($nuevaColumna!=-1){
 						echo ('<br>Se puede a mover derecha a la posicion: '.$nuevaColumna);
 					}
