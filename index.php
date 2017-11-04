@@ -96,15 +96,15 @@ function Hijos($arregloFichas,$turno){
 					}
 				}
 				if($fila<6 && $columna>1){
-					$nuevaFila=diagonalAbajoDerecha($arregloFichas,$turno,$fila+1,$columna-1);
+					$nuevaFila=diagonalAbajoIzquierda($arregloFichas,$turno,$fila+1,$columna-1);
 					if($nuevaFila!=-1){
-						echo ('<br>Posicion: '.$columna.' '.$fila.' Se puede a mover en diagonal abajo izquierda a la posicion: '.($columna-$nuevaFila+$fila).' '.$nuevaFila);
+						echo ('<br>Posicion: '.$columna.' '.$fila.' Se puede a mover en diagonal abajo izquierda a la posicion: '.$nuevaFila);
 					}
 				}
 				if($fila<6 && $columna<6){
-					$nuevaFila=diagonalAbajoIzquierda($arregloFichas,$turno,$fila+1,$columna+1);
+					$nuevaFila=diagonalAbajoDerecha($arregloFichas,$turno,$fila+1,$columna+1);
 					if($nuevaFila!=-1){
-						echo ('<br>Posicion: '.$columna.' '.$fila.' Se puede a mover en diagonal abajo derecha a la posicion: '.($columna+$nuevaFila-$fila).' '.$nuevaFila);
+						echo ('<br>Posicion: '.$columna.' '.$fila.' Se puede a mover en diagonal abajo derecha a la posicion: '.$nuevaFila);
 					}
 				}
 				$hijos++;
