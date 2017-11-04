@@ -59,9 +59,13 @@ function Hijos($arregloFichas,$turno){
 					}
 				}
 				if($columna>1){
-					if($arregloFichas[$fila][$columna-1]!=2 && $arregloFichas[$fila][$columna-1]!=turno && $arregloFichas[$fila][$columna-2]==2){
-						echo ('<br>Se puede mover izquierda');
+					$nuevaColumna=horizontalIzquierda($arregloFichas,$turno,$fila,$columna-1);
+					if($nuevaColumna!=-1){
+						echo ('<br>Se puede a mover izquierda a la posicion: '.$nuevaColumna);
 					}
+					//if($arregloFichas[$fila][$columna-1]!=2 && $arregloFichas[$fila][$columna-1]!=turno && $arregloFichas[$fila][$columna-2]==2){
+					//	echo ('<br>Se puede mover izquierda');
+					//}
 				}
 				if ($columna<6){
 					$nuevaColumna=horizontalDerecha($arregloFichas,$turno,$fila,$columna+1);
@@ -91,9 +95,20 @@ function horizontalDerecha($arregloFichas, $turno, $fila, $columna){
 			$columna++;
 		}
 	}
-	
 	return -1;
+}
 
+function horizontalIzquierda($arregloFichas, $turno, $fila, $columna){
+	if($arregloFichas[$fila][$columna]!=turno && $arregloFichas[$fila][$columna]!=2){
+		$columna++;
+		while($columna>=0){
+			if($arregloFichas[$fila][$columna]==2){
+				return $columna;
+			}
+			$columna--;
+		}
+	}
+	return -1;
 }
 
 Hijos($arregloFichas,$turno);
