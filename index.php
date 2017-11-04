@@ -51,13 +51,13 @@ function Hijos($arregloFichas,$turno){
 					echo ('<br>Se puede mover a la izquierda');
 				}
 				if ($fila<6){
-					echo ('<br>Se puede mover a la izquierda');
+					echo ('<br>Se puede mover a la derecha');
 				}
 				if($columna>1){
-					echo ('<br>Se puede mover a la izquierda');
+					echo ('<br>Se puede mover arriba');
 				}
 				if ($columna<6){
-					echo ('<br>Se puede mover a la izquierda');
+					echo ('<br>Se puede mover abajo');
 				}
 				$hijos++;
 			}
