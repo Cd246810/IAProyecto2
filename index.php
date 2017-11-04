@@ -48,16 +48,24 @@ function Hijos($arregloFichas,$turno){
 			//echo('<br>Estoy en: '.$dato.' Comparado con: '.$turno);
 			if($dato==$turno){
 				if($fila>1){
-					echo ('<br>Se puede mover a la izquierda');
+					if($arregloFichas[$fila-1][$columna]!=2 && $arregloFichas[$fila-1][$columna]!=turno && $arregloFichas[$fila-2][$columna]==2){
+						echo ('<br>Se puede mover a la izquierda');
+					}
 				}
 				if ($fila<6){
-					echo ('<br>Se puede mover a la derecha');
+					if($arregloFichas[$fila+1][$columna]!=2 && $arregloFichas[$fila+1][$columna]!=turno && $arregloFichas[$fila+2][$columna]==2){
+						echo ('<br>Se puede mover a la derecha');
+					}
 				}
 				if($columna>1){
-					echo ('<br>Se puede mover arriba');
+					if($arregloFichas[$fila][$columna-1]!=2 && $arregloFichas[$fila][$columna-1]!=turno && $arregloFichas[$fila][$columna-2]==2){
+						echo ('<br>Se puede mover arriba');
+					}
 				}
 				if ($columna<6){
-					echo ('<br>Se puede mover abajo');
+					if($arregloFichas[$fila][$columna+1]!=2 && $arregloFichas[$fila][$columna+1]!=turno && $arregloFichas[$fila][$columna+2]==2){
+						echo ('<br>Se puede mover abajo');
+					}
 				}
 				$hijos++;
 			}
