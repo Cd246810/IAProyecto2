@@ -50,7 +50,7 @@ function Hijos($arregloFichas,$turno,$nivel){
 				if($fila>1){
 					$nuevaFila=verticalArriba($arregloFichas,$turno,$fila-1,$columna);
 					if($nuevaFila!=-1){
-						echo ('<br>Se puede a mover arriba a la posicion: '.$nuevaFila);
+						//echo ('<br>Se puede a mover arriba a la posicion: '.$nuevaFila);
 						$hijoTemporal=array();
 						$hijoTemporal[]=llenarVerticalArriba($arregloFichas,$turno,$fila-1,$columna);
 						$hijoTemporal[]=$nuevaFila;
@@ -67,7 +67,7 @@ function Hijos($arregloFichas,$turno,$nivel){
 				if ($fila<6){
 					$nuevaFila=verticalAbajo($arregloFichas,$turno,$fila+1,$columna);
 					if($nuevaFila!=-1){
-						echo ('<br>Se puede a mover abajo a la posicion: '.$nuevaFila);
+						//echo ('<br>Se puede a mover abajo a la posicion: '.$nuevaFila);
 						$hijoTemporal=array();
 						$hijoTemporal[]=llenarVerticalAbajo($arregloFichas,$turno,$fila+1,$columna);
 						$hijoTemporal[]=$nuevaFila;
@@ -83,7 +83,7 @@ function Hijos($arregloFichas,$turno,$nivel){
 				if($columna>1){
 					$nuevaColumna=horizontalIzquierda($arregloFichas,$turno,$fila,$columna-1);
 					if($nuevaColumna!=-1){
-						echo ('<br>Se puede a mover izquierda a la posicion: '.$nuevaColumna);
+						//echo ('<br>Se puede a mover izquierda a la posicion: '.$nuevaColumna);
 						$hijoTemporal=array();
 						$hijoTemporal[]=llenarHorizontalIzquierda($arregloFichas,$turno,$fila,$columna-1);
 						$hijoTemporal[]=$fila;
@@ -99,7 +99,7 @@ function Hijos($arregloFichas,$turno,$nivel){
 				if ($columna<6){
 					$nuevaColumna=horizontalDerecha($arregloFichas,$turno,$fila,$columna+1);
 					if($nuevaColumna!=-1){
-						echo ('<br>Se puede a mover derecha a la posicion: '.$nuevaColumna);
+						//echo ('<br>Se puede a mover derecha a la posicion: '.$nuevaColumna);
 						$hijoTemporal=array();
 						$hijoTemporal[]=llenarHorizontalDerecha($arregloFichas,$turno,$fila,$columna+1);
 						$hijoTemporal[]=$fila;
@@ -115,7 +115,7 @@ function Hijos($arregloFichas,$turno,$nivel){
 				if($fila>1 && $columna>1){
 					$nuevaFila=diagonalArribaIzquierda($arregloFichas,$turno,$fila-1,$columna-1);
 					if($nuevaFila!=-1){
-						echo ('<br>Posicion: '.$columna.' '.$fila.' Se puede a mover en diagonal arriba izquierda a la posicion: '.($columna+$nuevaFila-$fila).' '.$nuevaFila);
+						//echo ('<br>Posicion: '.$columna.' '.$fila.' Se puede a mover en diagonal arriba izquierda a la posicion: '.($columna+$nuevaFila-$fila).' '.$nuevaFila);
 						$hijoTemporal=array();
 						$hijoTemporal[]=llenarDiagonalArribaIzquierda($arregloFichas,$turno,$fila-1,$columna-1);
 						$hijoTemporal[]=$columna+$nuevaFila-$fila;
@@ -128,7 +128,7 @@ function Hijos($arregloFichas,$turno,$nivel){
 				if($fila>1 && $columna<6){
 					$nuevaFila=diagonalArribaDerecha($arregloFichas,$turno,$fila-1,$columna+1);
 					if($nuevaFila!=-1){
-						echo ('<br>Posicion: '.$columna.' '.$fila.' Se puede a mover en diagonal arriba derecha a la posicion: '.($columna-$nuevaFila+$fila).' '.$nuevaFila);
+						//echo ('<br>Posicion: '.$columna.' '.$fila.' Se puede a mover en diagonal arriba derecha a la posicion: '.($columna-$nuevaFila+$fila).' '.$nuevaFila);
 						$hijoTemporal=array();
 						$hijoTemporal[]=llenarDiagonalArribaDerecha($arregloFichas,$turno,$fila-1,$columna+1);
 						$hijoTemporal[]=$columna-$nuevaFila+$fila;
@@ -141,7 +141,7 @@ function Hijos($arregloFichas,$turno,$nivel){
 				if($fila<6 && $columna>1){
 					$nuevaFila=diagonalAbajoIzquierda($arregloFichas,$turno,$fila+1,$columna-1);
 					if($nuevaFila!=-1){
-						echo ('<br>Posicion: '.$columna.' '.$fila.' Se puede a mover en diagonal abajo izquierda a la posicion: '.($columna-$nuevaFila+$fila).' '.$nuevaFila);
+						//echo ('<br>Posicion: '.$columna.' '.$fila.' Se puede a mover en diagonal abajo izquierda a la posicion: '.($columna-$nuevaFila+$fila).' '.$nuevaFila);
 						$hijoTemporal=array();
 						$hijoTemporal[]=llenarDiagonalAbajoIzquierda($arregloFichas,$turno,$fila+1,$columna-1);
 						$hijoTemporal[]=$columna-$nuevaFila+$fila;
@@ -154,7 +154,7 @@ function Hijos($arregloFichas,$turno,$nivel){
 				if($fila<6 && $columna<6){
 					$nuevaFila=diagonalAbajoDerecha($arregloFichas,$turno,$fila+1,$columna+1);
 					if($nuevaFila!=-1){
-						echo ('<br>Posicion: '.$columna.' '.$fila.' Se puede a mover en diagonal abajo derecha a la posicion: '.($columna+$nuevaFila-$fila).' '.$nuevaFila);
+						//echo ('<br>Posicion: '.$columna.' '.$fila.' Se puede a mover en diagonal abajo derecha a la posicion: '.($columna+$nuevaFila-$fila).' '.$nuevaFila);
 						$hijoTemporal=array();
 						$hijoTemporal[]=llenarDiagonalAbajoDerecha($arregloFichas,$turno,$fila+1,$columna+1);
 						$hijoTemporal[]=$columna+$nuevaFila-$fila;
@@ -422,7 +422,7 @@ function backtracking($raiz,$turno){
 	while($lista){
 		$nodoActual=array_shift($lista);
 		$visitado[]=$nodoActual;
-		if($nodoActual[4]<4){
+		if($nodoActual[4]<1){
 			$hijos=array();
 			$hijos=Hijos($nodoActual[0],$turno,$nodoActual[4]);
 			foreach ($hijos as $hijo) {
