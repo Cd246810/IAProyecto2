@@ -53,7 +53,7 @@ function Hijos($arregloFichas,$turno){
 						echo ('<br>Se puede a mover arriba a la posicion: '.$nuevaFila);
 						$hijoTemporal=array();
 						$hijoTemporal[]=llenarVerticalArriba($arregloFichas,$turno,$fila-1,$columna);
-						$hijoTemporal[]=$nuevafila;
+						$hijoTemporal[]=$nuevaFila;
 						$hijoTemporal[]=$columna;
 						$hijos[]=$hijoTemporal;
 					}
@@ -68,7 +68,7 @@ function Hijos($arregloFichas,$turno){
 						echo ('<br>Se puede a mover abajo a la posicion: '.$nuevaFila);
 						$hijoTemporal=array();
 						$hijoTemporal[]=llenarVerticalAbajo($arregloFichas,$turno,$fila+1,$columna);
-						$hijoTemporal[]=$nuevafila;
+						$hijoTemporal[]=$nuevaFila;
 						$hijoTemporal[]=$columna;
 						$hijos[]=$hijoTemporal;
 					}
