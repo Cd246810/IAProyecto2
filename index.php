@@ -38,7 +38,7 @@ foreach($arregloFichas as $datoFila){
 }
 
 function Hijos($arregloFichas,$turno){
-	$hijos=0;
+	$hijos=array();
 	$filas=0;
 	$columna=0;
 	foreach($arregloFichas as $datoFila){
@@ -51,7 +51,13 @@ function Hijos($arregloFichas,$turno){
 					$nuevaFila=verticalArriba($arregloFichas,$turno,$fila-1,$columna);
 					if($nuevaFila!=-1){
 						echo ('<br>Se puede a mover arriba a la posicion: '.$nuevaFila);
+						$hijoTemporal=array();
+						$hijoTemporal[]=llenarVerticalArriba($arregloFichas,$turno,$fila-1,$columna);
+						$hijoTemporal[]=$nuevafila;
+						$hijoTemporal[]=$columna;
+						$hijos[]=$hijoTemporal;
 					}
+
 					//if($arregloFichas[$fila-1][$columna]!=2 && $arregloFichas[$fila-1][$columna]!=turno && $arregloFichas[$fila-2][$columna]==2){
 					//	echo ('<br>Se puede mover a la arriba');
 					//}
@@ -107,7 +113,6 @@ function Hijos($arregloFichas,$turno){
 						echo ('<br>Posicion: '.$columna.' '.$fila.' Se puede a mover en diagonal abajo derecha a la posicion: '.($columna+$nuevaFila-$fila).' '.$nuevaFila);
 					}
 				}
-				$hijos++;
 			}
 			$columna++;
         }
@@ -130,6 +135,18 @@ function verticalArriba($arregloFichas, $turno, $fila, $columna){
 		}
 	}
 	return -1;
+}
+
+function llenarVerticalArriba($arregloFichas, $turno, $fila, $columna){
+	$retorno=$arregloFichas;
+	while($fila>=0){
+		$retorno[$fila][$columna]=$turno;
+		if($arregloFichas[$fila][$columna]==2){
+			return $retorno;
+		}
+		$fila--;
+	}
+	return $retorno;
 }
 
 function verticalAbajo($arregloFichas, $turno, $fila, $columna){
