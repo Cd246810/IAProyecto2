@@ -408,12 +408,12 @@ function llenarDiagonalAbajoDerecha($arregloFichas, $turno, $fila, $columna){
 	return $retorno;
 }
 
-function backtracking($inicio,$turno){
+function backtracking($raiz,$turno){
 	$nivel=0;
 	$lista=array();
 	$visitado=array();
 	$inicio=array();
-	$inicio[]=$inicio;
+	$inicio[]=$raiz;
 	$inicio[]=0;
 	$inicio[]=0;
 	$inicio[]=0;
