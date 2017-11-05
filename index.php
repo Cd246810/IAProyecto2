@@ -55,6 +55,7 @@ function Hijos($arregloFichas,$turno){
 						$hijoTemporal[]=llenarVerticalArriba($arregloFichas,$turno,$fila-1,$columna);
 						$hijoTemporal[]=$nuevaFila;
 						$hijoTemporal[]=$columna;
+						$hijoTemporal[]=10;
 						$hijos[]=$hijoTemporal;
 					}
 
@@ -70,6 +71,7 @@ function Hijos($arregloFichas,$turno){
 						$hijoTemporal[]=llenarVerticalAbajo($arregloFichas,$turno,$fila+1,$columna);
 						$hijoTemporal[]=$nuevaFila;
 						$hijoTemporal[]=$columna;
+						$hijoTemporal[]=10;
 						$hijos[]=$hijoTemporal;
 					}
 					//if($arregloFichas[$fila+1][$columna]!=2 && $arregloFichas[$fila+1][$columna]!=turno && $arregloFichas[$fila+2][$columna]==2){
@@ -82,8 +84,9 @@ function Hijos($arregloFichas,$turno){
 						echo ('<br>Se puede a mover izquierda a la posicion: '.$nuevaColumna);
 						$hijoTemporal=array();
 						$hijoTemporal[]=llenarHorizontalIzquierda($arregloFichas,$turno,$fila,$columna-1);
-						$hijoTemporal[]=$nuevaFila;
-						$hijoTemporal[]=$columna;
+						$hijoTemporal[]=$fila;
+						$hijoTemporal[]=$nuevaColumna;
+						$hijoTemporal[]=10;
 						$hijos[]=$hijoTemporal;
 					}
 					//if($arregloFichas[$fila][$columna-1]!=2 && $arregloFichas[$fila][$columna-1]!=turno && $arregloFichas[$fila][$columna-2]==2){
@@ -96,8 +99,9 @@ function Hijos($arregloFichas,$turno){
 						echo ('<br>Se puede a mover derecha a la posicion: '.$nuevaColumna);
 						$hijoTemporal=array();
 						$hijoTemporal[]=llenarHorizontalDerecha($arregloFichas,$turno,$fila,$columna+1);
-						$hijoTemporal[]=$nuevaFila;
-						$hijoTemporal[]=$columna;
+						$hijoTemporal[]=$fila;
+						$hijoTemporal[]=$nuevaColumna;
+						$hijoTemporal[]=10;
 						$hijos[]=$hijoTemporal;
 					}
 					//if($arregloFichas[$fila][$columna+1]!=2 && $arregloFichas[$fila][$columna+1]!=turno && $arregloFichas[$fila][$columna+2]==2){
