@@ -65,7 +65,7 @@ function Heuristica($arregloFichas,$turno){
 	return $retorno;
 }
 
-function Hijos($arregloFichas,$turno,$nivel,$jugador){
+function Hijos($arregloFichas,$turno,$nivel,$jugador,$padre){
 	$hijos=array();
 	$filas=0;
 	$columna=0;
@@ -85,6 +85,7 @@ function Hijos($arregloFichas,$turno,$nivel,$jugador){
 						$hijoTemporal[]=$columna;
 						$hijoTemporal[]=Heuristica($hijoTemporal[0],$jugador);
 						$hijoTemporal[]=$nivel+1;
+						$hijoTemporal[]=$padre;
 						$hijos[]=$hijoTemporal;
 					}
 
@@ -102,6 +103,7 @@ function Hijos($arregloFichas,$turno,$nivel,$jugador){
 						$hijoTemporal[]=$columna;
 						$hijoTemporal[]=Heuristica($hijoTemporal[0],$jugador);
 						$hijoTemporal[]=$nivel+1;
+						$hijoTemporal[]=$padre;
 						$hijos[]=$hijoTemporal;
 					}
 					//if($arregloFichas[$fila+1][$columna]!=2 && $arregloFichas[$fila+1][$columna]!=turno && $arregloFichas[$fila+2][$columna]==2){
@@ -118,6 +120,7 @@ function Hijos($arregloFichas,$turno,$nivel,$jugador){
 						$hijoTemporal[]=$nuevaColumna;
 						$hijoTemporal[]=Heuristica($hijoTemporal[0],$jugador);
 						$hijoTemporal[]=$nivel+1;
+						$hijoTemporal[]=$padre;
 						$hijos[]=$hijoTemporal;
 					}
 					//if($arregloFichas[$fila][$columna-1]!=2 && $arregloFichas[$fila][$columna-1]!=turno && $arregloFichas[$fila][$columna-2]==2){
@@ -134,6 +137,7 @@ function Hijos($arregloFichas,$turno,$nivel,$jugador){
 						$hijoTemporal[]=$nuevaColumna;
 						$hijoTemporal[]=Heuristica($hijoTemporal[0],$jugador);
 						$hijoTemporal[]=$nivel+1;
+						$hijoTemporal[]=$padre;
 						$hijos[]=$hijoTemporal;
 					}
 					//if($arregloFichas[$fila][$columna+1]!=2 && $arregloFichas[$fila][$columna+1]!=turno && $arregloFichas[$fila][$columna+2]==2){
@@ -150,6 +154,7 @@ function Hijos($arregloFichas,$turno,$nivel,$jugador){
 						$hijoTemporal[]=$nuevaFila;
 						$hijoTemporal[]=Heuristica($hijoTemporal[0],$jugador);
 						$hijoTemporal[]=$nivel+1;
+						$hijoTemporal[]=$padre;
 						$hijos[]=$hijoTemporal;
 					}
 				}
@@ -163,6 +168,7 @@ function Hijos($arregloFichas,$turno,$nivel,$jugador){
 						$hijoTemporal[]=$nuevaFila;
 						$hijoTemporal[]=Heuristica($hijoTemporal[0],$jugador);
 						$hijoTemporal[]=$nivel+1;
+						$hijoTemporal[]=$padre;
 						$hijos[]=$hijoTemporal;
 					}
 				}
@@ -176,6 +182,7 @@ function Hijos($arregloFichas,$turno,$nivel,$jugador){
 						$hijoTemporal[]=$nuevaFila;
 						$hijoTemporal[]=Heuristica($hijoTemporal[0],$jugador);
 						$hijoTemporal[]=$nivel+1;
+						$hijoTemporal[]=$padre;
 						$hijos[]=$hijoTemporal;
 					}
 				}
@@ -189,6 +196,7 @@ function Hijos($arregloFichas,$turno,$nivel,$jugador){
 						$hijoTemporal[]=$nuevaFila;
 						$hijoTemporal[]=Heuristica($hijoTemporal[0],$jugador);
 						$hijoTemporal[]=$nivel+1;
+						$hijoTemporal[]=$padre;
 						$hijos[]=$hijoTemporal;
 					}
 				}
@@ -441,7 +449,9 @@ function backtracking($raiz,$turno){
 	$lista=array();
 	$visitado=array();
 	$inicio=array();
+	$ID=0;
 	$inicio[]=$raiz;
+	$inicio[]=0;
 	$inicio[]=0;
 	$inicio[]=0;
 	$inicio[]=0;
@@ -449,6 +459,8 @@ function backtracking($raiz,$turno){
 	$lista[]=$inicio;
 	$turnoActual=$turno;
 	while($lista){
+		$nodoActual[]=$ID;
+		$ID=$ID++;
 		$nodoActual=array_shift($lista);
 		$visitado[]=$nodoActual;
 		if($nodoActual[4]<4){
@@ -462,7 +474,7 @@ function backtracking($raiz,$turno){
 				}
 			}
 			$hijos=array();
-			$hijos=Hijos($nodoActual[0],$turnoActual,$nodoActual[4],$turno);
+			$hijos=Hijos($nodoActual[0],$turnoActual,$nodoActual[4],$turno, $nodoActual[6]);
 			foreach ($hijos as $hijo) {
 				//array_push($lista, $hijo);
 				array_unshift($lista, $hijo);
@@ -472,7 +484,7 @@ function backtracking($raiz,$turno){
 	foreach ($visitado as $hijo) {
 		echo('<br>');
 		echo('<br>');
-		echo ('Posicion a la que se movio: '.$hijo[1].' - '.$hijo[2].' Con ponderacion= '.$hijo[3].' y nivel: '.$hijo[4]);
+		echo ('ID: '.$hijo[6].' Padre: '.$hijo[5].'Posicion a la que se movio: '.$hijo[1].' - '.$hijo[2].' Con ponderacion= '.$hijo[3].' y nivel: '.$hijo[4]);
 		foreach($hijo[0] as $datoFila){
 			echo('<br>');
 			foreach($datoFila as $dato){
