@@ -425,7 +425,7 @@ function backtracking($inicio,$turno){
 		if($nodoActual[4]<5){
 			$hijos=array();
 			$hijos=Hijos($nodoActual[0],$turno,$nodoActual[4]);
-			array_push($lista, $hijos)
+			array_push($lista, $hijos);
 		}
 	}
 	foreach ($visitado as $hijo) {
