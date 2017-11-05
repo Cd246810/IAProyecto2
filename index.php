@@ -48,7 +48,6 @@ function Heuristica($arregloFichas,$turno){
 		array(25,-50,5,5,5,5,-50,25),
 		array(-100,-100,-50,-50,-50,-50,-100,-100),
 		array(200,-100,25,25,25,25,-100,200)
-		
 	);
 	$columna=0;
 	$fila=0;
@@ -465,9 +464,9 @@ function backtracking($raiz,$turno){
 			$hijos=array();
 			$hijos=Hijos($nodoActual[0],$turnoActual,$nodoActual[4],$turno);
 			foreach ($hijos as $hijo) {
-				array_push($lista, $hijo);
+				//array_push($lista, $hijo);
+				array_unshift($lista, $hijo);
 			}
-
 		}
 	}
 	foreach ($visitado as $hijo) {
@@ -482,6 +481,11 @@ function backtracking($raiz,$turno){
 		}
 	}
 }
+
+function Subir(){
+
+}
+
 backtracking($arregloFichas,$turno);
 //$Sucesores=Hijos($arregloFichas,$turno,0);
 /*
