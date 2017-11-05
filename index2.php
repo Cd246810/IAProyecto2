@@ -494,9 +494,68 @@ function backtracking($raiz,$turno){
 	}
 }
 
+//Max, mini, max
+
+function backtrackingRecursivo($nodoActual,$turno,$turnoActual){
+	if($nodoActual[4]<4){
+		$nodoActual[]=0;
+		if($nodoActual[4] % 2 == 0){
+			$turnoActual=$turno;
+		}else{
+			if($turno==1){
+				$turnoActual=0;
+			}else{
+				$turnoActual=1;
+			}
+		}
+		echo ('Posicion a la que se movio: '.$turnoActual[1].' - '.$turnoActual[2].' Con ponderacion= '.$turnoActual[3].' y nivel: '.$turnoActual[4]);
+		$hijos=array();
+		$hijos=Hijos($nodoActual[0],$turnoActual,$nodoActual[4],$turno, $nodoActual[6]);
+		$listo=0;
+		foreach ($hijos as $hijo) {
+			$temporal=backtrackingRecursivo($hijo,$turno,$turnoActual);
+			if($listo==0){
+				$nodoActual[3]=$temporal[3];
+				$listo=1;
+				$nodoActual[1]=$temporal[1];
+				$nodoActual[2]=$temporal[2];
+			}else{
+				if($nodoActual[4] % 2 == 0){
+					if($nodoActual[3]<$temporal[3]){
+						$nodoActual[3]=$temporal[3];
+						$nodoActual[1]=$temporal[1];
+						$nodoActual[2]=$temporal[2];
+					}
+				}else{
+					if($nodoActual[3]>$temporal[3]){
+						$nodoActual[3]=$temporal[3];
+						$nodoActual[1]=$temporal[1];
+						$nodoActual[2]=$temporal[2];
+					}
+				}
+			}
+		}
+	}
+	return $nodoActual;
+}
+
+function llamarbackTrackingRecursivo($raiz,$turno){
+	$nivel=0;
+	$lista=array();
+	$visitado=array();
+	$inicio=array();
+	$ID=0;
+	$inicio[]=$raiz;
+	$inicio[]=0;
+	$inicio[]=0;
+	$inicio[]=0;
+	$inicio[]=0;
+	$inicio[]=0;
+	backtrackingRecursivo($inicio,$turno,$turno);
+}
 
 
-backtracking($arregloFichas,$turno);
+llamarbackTrackingRecursivo($arregloFichas,$turno);
 //$Sucesores=Hijos($arregloFichas,$turno,0);
 /*
 foreach ($Sucesores as $hijo) {
