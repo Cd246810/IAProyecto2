@@ -118,6 +118,7 @@ function Hijos($arregloFichas,$turno){
         }
         $fila++;
 	}
+	return $hijos;
 	//echo('Numero de hijos: '.$hijos);
 }
 
