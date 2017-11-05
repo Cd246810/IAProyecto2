@@ -112,6 +112,12 @@ function Hijos($arregloFichas,$turno){
 					$nuevaFila=diagonalArribaIzquierda($arregloFichas,$turno,$fila-1,$columna-1);
 					if($nuevaFila!=-1){
 						echo ('<br>Posicion: '.$columna.' '.$fila.' Se puede a mover en diagonal arriba izquierda a la posicion: '.($columna+$nuevaFila-$fila).' '.$nuevaFila);
+						$hijoTemporal=array();
+						$hijoTemporal[]=llenarDiagonalArribaIzquierda($arregloFichas,$turno,$fila-1,$columna-1);
+						$hijoTemporal[]=$columna+$nuevaFila-$fila;
+						$hijoTemporal[]=$nuevaFila;
+						$hijoTemporal[]=10;
+						$hijos[]=$hijoTemporal;
 					}
 				}
 				if($fila>1 && $columna<6){
@@ -256,7 +262,7 @@ function diagonalArribaIzquierda($arregloFichas, $turno, $fila, $columna){
 	if($arregloFichas[$fila][$columna]!=$turno && $arregloFichas[$fila][$columna]!=2){
 		$fila--;
 		$columna--;
-		while($fila>=0 || $columna>=0){
+		while($fila>=0 && $columna>=0){
 			if($arregloFichas[$fila][$columna]==$turno){
 				return -1;
 			}
@@ -270,11 +276,24 @@ function diagonalArribaIzquierda($arregloFichas, $turno, $fila, $columna){
 	return -1;
 }//por op aritmetica sacar la columna columna tambien;
 
+function llenarDiagonalArribaIzquierda($arregloFichas, $turno, $fila, $columna){
+	$retorno=$arregloFichas;
+	while($fila>=0 && $columna>=0){
+		$retorno[$fila][$columna]=$turno;
+		if($arregloFichas[$fila][$columna]==2){
+			return $retorno;
+		}
+		$fila--;
+		$columna--;
+	}
+	return $retorno;
+}
+
 function diagonalArribaDerecha($arregloFichas, $turno, $fila, $columna){
 	if($arregloFichas[$fila][$columna]!=$turno && $arregloFichas[$fila][$columna]!=2){
 		$fila--;
 		$columna++;
-		while($fila>=0 || $columna<8){
+		while($fila>=0 && $columna<8){
 			if($arregloFichas[$fila][$columna]==$turno){
 				return -1;
 			}
@@ -292,7 +311,7 @@ function diagonalAbajoIzquierda($arregloFichas, $turno, $fila, $columna){
 	if($arregloFichas[$fila][$columna]!=$turno && $arregloFichas[$fila][$columna]!=2){
 		$fila++;
 		$columna--;
-		while($fila<8 || $columna>=0){
+		while($fila<8 && $columna>=0){
 			if($arregloFichas[$fila][$columna]==$turno){
 				return -1;
 			}
@@ -310,7 +329,7 @@ function diagonalAbajoDerecha($arregloFichas, $turno, $fila, $columna){
 	if($arregloFichas[$fila][$columna]!=$turno && $arregloFichas[$fila][$columna]!=2){
 		$fila++;
 		$columna++;
-		while($fila<8 || $columna<8){
+		while($fila<8 && $columna<8){
 			if($arregloFichas[$fila][$columna]==$turno){
 				return -1;
 			}
@@ -328,7 +347,7 @@ $Sucesores=Hijos($arregloFichas,$turno);
 
 foreach ($Sucesores as $hijo) {
 	echo('<br>');
-	echo ('Posicion a la que se movio: '.$hijo[1].' - '.$hijo[2]);
+	echo ('Posicion a la que se movio: '.$hijo[1].' - '.$hijo[2].' Con ponderacion= '.$hijo[3]);
 	foreach($hijo[0] as $datoFila){
 		echo('<br>');
 		foreach($datoFila as $dato){
