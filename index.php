@@ -38,7 +38,7 @@ foreach($arregloFichas as $datoFila){
 }
 
 function Heuristica($arregloFichas,$turno){
-	int $retorno=0;
+	$retorno=0;
 	$arregloValores=array(
 		array(200,-100,-25,-25,-25,-25,-100,200),
 		array(-100,-100,-50,-50,-50,-50,-100,-100),
