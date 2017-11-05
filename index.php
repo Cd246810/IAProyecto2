@@ -37,7 +37,7 @@ foreach($arregloFichas as $datoFila){
 	}
 }
 
-function Hijos($arregloFichas,$turno){
+function Hijos($arregloFichas,$turno,$nivel){
 	$hijos=array();
 	$filas=0;
 	$columna=0;
@@ -56,6 +56,7 @@ function Hijos($arregloFichas,$turno){
 						$hijoTemporal[]=$nuevaFila;
 						$hijoTemporal[]=$columna;
 						$hijoTemporal[]=10;
+						$hijoTemporal[]=$nivel+1;
 						$hijos[]=$hijoTemporal;
 					}
 
@@ -72,6 +73,7 @@ function Hijos($arregloFichas,$turno){
 						$hijoTemporal[]=$nuevaFila;
 						$hijoTemporal[]=$columna;
 						$hijoTemporal[]=10;
+						$hijoTemporal[]=$nivel+1;
 						$hijos[]=$hijoTemporal;
 					}
 					//if($arregloFichas[$fila+1][$columna]!=2 && $arregloFichas[$fila+1][$columna]!=turno && $arregloFichas[$fila+2][$columna]==2){
@@ -87,6 +89,7 @@ function Hijos($arregloFichas,$turno){
 						$hijoTemporal[]=$fila;
 						$hijoTemporal[]=$nuevaColumna;
 						$hijoTemporal[]=10;
+						$hijoTemporal[]=$nivel+1;
 						$hijos[]=$hijoTemporal;
 					}
 					//if($arregloFichas[$fila][$columna-1]!=2 && $arregloFichas[$fila][$columna-1]!=turno && $arregloFichas[$fila][$columna-2]==2){
@@ -102,6 +105,7 @@ function Hijos($arregloFichas,$turno){
 						$hijoTemporal[]=$fila;
 						$hijoTemporal[]=$nuevaColumna;
 						$hijoTemporal[]=10;
+						$hijoTemporal[]=$nivel+1;
 						$hijos[]=$hijoTemporal;
 					}
 					//if($arregloFichas[$fila][$columna+1]!=2 && $arregloFichas[$fila][$columna+1]!=turno && $arregloFichas[$fila][$columna+2]==2){
@@ -117,6 +121,7 @@ function Hijos($arregloFichas,$turno){
 						$hijoTemporal[]=$columna+$nuevaFila-$fila;
 						$hijoTemporal[]=$nuevaFila;
 						$hijoTemporal[]=10;
+						$hijoTemporal[]=$nivel+1;
 						$hijos[]=$hijoTemporal;
 					}
 				}
@@ -129,6 +134,7 @@ function Hijos($arregloFichas,$turno){
 						$hijoTemporal[]=$columna-$nuevaFila+$fila;
 						$hijoTemporal[]=$nuevaFila;
 						$hijoTemporal[]=10;
+						$hijoTemporal[]=$nivel+1;
 						$hijos[]=$hijoTemporal;
 					}
 				}
@@ -141,6 +147,7 @@ function Hijos($arregloFichas,$turno){
 						$hijoTemporal[]=$columna-$nuevaFila+$fila;
 						$hijoTemporal[]=$nuevaFila;
 						$hijoTemporal[]=10;
+						$hijoTemporal[]=$nivel+1;
 						$hijos[]=$hijoTemporal;
 					}
 				}
@@ -153,6 +160,7 @@ function Hijos($arregloFichas,$turno){
 						$hijoTemporal[]=$columna+$nuevaFila-$fila;
 						$hijoTemporal[]=$nuevaFila;
 						$hijoTemporal[]=10;
+						$hijoTemporal[]=$nivel+1;
 						$hijos[]=$hijoTemporal;
 					}
 				}
@@ -400,12 +408,45 @@ function llenarDiagonalAbajoDerecha($arregloFichas, $turno, $fila, $columna){
 	return $retorno;
 }
 
-$Sucesores=Hijos($arregloFichas,$turno);
-
+function backtracking($inicio,$turno){
+	$nivel=0;
+	$lista=array();
+	$visitado=array();
+	$inicio=array();
+	$inicio[]=$inicio;
+	$inicio[]=0;
+	$inicio[]=0;
+	$inicio[]=0;
+	$inicio[]=0;
+	$lista[]=$inicio;
+	while($lista){
+		$nodoActual=array_shift($lista);
+		$visitado[]=$nodoActual;
+		if($nodoActual[4]<5){
+			$hijos=array();
+			$hijos=Hijos($nodoActual[0],$turno,$nodoActual[4]);
+			array_push($lista, $hijos)
+		}
+	}
+	foreach ($visitado as $hijo) {
+		echo('<br>');
+		echo('<br>');
+		echo ('Posicion a la que se movio: '.$hijo[1].' - '.$hijo[2].' Con ponderacion= '.$hijo[3].' y nivel: '.$hijo[4]);
+		foreach($hijo[0] as $datoFila){
+			echo('<br>');
+			foreach($datoFila as $dato){
+				echo($dato." ");
+			}
+		}
+	}
+}
+backtracking($arregloFichas,$turno);
+//$Sucesores=Hijos($arregloFichas,$turno,0);
+/*
 foreach ($Sucesores as $hijo) {
 	echo('<br>');
 	echo('<br>');
-	echo ('Posicion a la que se movio: '.$hijo[1].' - '.$hijo[2].' Con ponderacion= '.$hijo[3]);
+	echo ('Posicion a la que se movio: '.$hijo[1].' - '.$hijo[2].' Con ponderacion= '.$hijo[3].' y nivel: '.$hijo[4]);
 	foreach($hijo[0] as $datoFila){
 		echo('<br>');
 		foreach($datoFila as $dato){
@@ -413,6 +454,6 @@ foreach ($Sucesores as $hijo) {
 		}
 	}
 }
-
+*/
 
 ?>
