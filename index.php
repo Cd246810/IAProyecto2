@@ -66,6 +66,11 @@ function Hijos($arregloFichas,$turno){
 					$nuevaFila=verticalAbajo($arregloFichas,$turno,$fila+1,$columna);
 					if($nuevaFila!=-1){
 						echo ('<br>Se puede a mover abajo a la posicion: '.$nuevaFila);
+						$hijoTemporal=array();
+						$hijoTemporal[]=llenarVerticalAbajo($arregloFichas,$turno,$fila+1,$columna);
+						$hijoTemporal[]=$nuevafila;
+						$hijoTemporal[]=$columna;
+						$hijos[]=$hijoTemporal;
 					}
 					//if($arregloFichas[$fila+1][$columna]!=2 && $arregloFichas[$fila+1][$columna]!=turno && $arregloFichas[$fila+2][$columna]==2){
 					//	echo ('<br>Se puede mover a la abajo');
@@ -164,6 +169,17 @@ function verticalAbajo($arregloFichas, $turno, $fila, $columna){
 		}
 	}
 	return -1;
+}
+function llenarVerticalAbajo($arregloFichas, $turno, $fila, $columna){
+	$retorno=$arregloFichas;
+	while($fila<8){
+		$retorno[$fila][$columna]=$turno;
+		if($arregloFichas[$fila][$columna]==2){
+			return $retorno;
+		}
+		$fila++;
+	}
+	return $retorno;
 }
 
 function horizontalDerecha($arregloFichas, $turno, $fila, $columna){
@@ -274,7 +290,10 @@ $Sucesores=Hijos($arregloFichas,$turno);
 
 foreach ($Sucesores as $hijo) {
 	foreach($hijo[0] as $datoFila){
-	echo('<br>');
+		echo('<br>');
+		echo('<br>');
+		echo ('Posicion a la que se movio: '.$hijo[1]' - '$hijo[2]);
+		echo('<br>');
 		foreach($datoFila as $dato){
 			echo($dato." ");
 		}
