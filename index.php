@@ -426,7 +426,7 @@ function backtracking($raiz,$turno){
 			$hijos=array();
 			$hijos=Hijos($nodoActual[0],$turno,$nodoActual[4]);
 			foreach ($hijos as $hijo) {
-				array_push($visitado, $hijo);
+				array_push($lista, $hijo);
 			}
 		}
 	}
