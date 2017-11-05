@@ -423,7 +423,7 @@ function backtracking($raiz,$turno){
 	while($lista){
 		$nodoActual=array_shift($lista);
 		$visitado[]=$nodoActual;
-		if($nodoActual[4]<4){
+		if($nodoActual[4]<2){
 			if($nodoActual[4] % 2 == 0){
 				$turnoActual=$turno;
 			}else{
@@ -438,6 +438,7 @@ function backtracking($raiz,$turno){
 			foreach ($hijos as $hijo) {
 				array_push($lista, $hijo);
 			}
+
 		}
 	}
 	foreach ($visitado as $hijo) {
