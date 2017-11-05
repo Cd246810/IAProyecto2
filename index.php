@@ -37,7 +37,34 @@ foreach($arregloFichas as $datoFila){
 	}
 }
 
-function Hijos($arregloFichas,$turno,$nivel){
+function Heuristica($arregloFichas,$turno){
+	int $retorno=0;
+	$arregloValores=array(
+		array(200,-100,-25,-25,-25,-25,-100,200),
+		array(-100,-100,-50,-50,-50,-50,-100,-100),
+		array(-25,-50,-5,-5,-5,-5,-50,-25),
+		array(-25,-50,-5,-5,-5,-5,-50,-25),
+		array(-25,-50,-5,-5,-5,-5,-50,-25),
+		array(-25,-50,-5,-5,-5,-5,-50,-25),
+		array(200,-100,-25,-25,-25,-25,-100,200),
+		array(-100,-100,-50,-50,-50,-50,-100,-100)
+	);
+	$columna=0;
+	$fila=0;
+	foreach($arregloFichas as $datoFila){
+		$columna=0;
+		foreach($datoFila as $dato){
+			if($dato==$turno){
+				$retorno=$retorno+$arregloValores[fila][columna];
+			}
+			$columna++;
+		}
+		$fila++;
+	}
+	return $retorno;
+}
+
+function Hijos($arregloFichas,$turno,$nivel,$jugador){
 	$hijos=array();
 	$filas=0;
 	$columna=0;
@@ -55,7 +82,7 @@ function Hijos($arregloFichas,$turno,$nivel){
 						$hijoTemporal[]=llenarVerticalArriba($arregloFichas,$turno,$fila-1,$columna);
 						$hijoTemporal[]=$nuevaFila;
 						$hijoTemporal[]=$columna;
-						$hijoTemporal[]=10;
+						$hijoTemporal[]=Heuristica($hijoTemporal[0],$jugador);
 						$hijoTemporal[]=$nivel+1;
 						$hijos[]=$hijoTemporal;
 					}
@@ -72,7 +99,7 @@ function Hijos($arregloFichas,$turno,$nivel){
 						$hijoTemporal[]=llenarVerticalAbajo($arregloFichas,$turno,$fila+1,$columna);
 						$hijoTemporal[]=$nuevaFila;
 						$hijoTemporal[]=$columna;
-						$hijoTemporal[]=10;
+						$hijoTemporal[]=Heuristica($hijoTemporal[0],$jugador);
 						$hijoTemporal[]=$nivel+1;
 						$hijos[]=$hijoTemporal;
 					}
@@ -434,7 +461,7 @@ function backtracking($raiz,$turno){
 				}
 			}
 			$hijos=array();
-			$hijos=Hijos($nodoActual[0],$turnoActual,$nodoActual[4]);
+			$hijos=Hijos($nodoActual[0],$turnoActual,$nodoActual[4],$turno);
 			foreach ($hijos as $hijo) {
 				array_push($lista, $hijo);
 			}
