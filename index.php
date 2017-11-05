@@ -290,6 +290,7 @@ $Sucesores=Hijos($arregloFichas,$turno);
 
 foreach ($Sucesores as $hijo) {
 	echo('<br>');
+	echo ('Posicion a la que se movio: '.$hijo[1].' - '.$hijo[2]);
 	foreach($hijo[0] as $datoFila){
 		echo('<br>');
 		//echo('<br>');
