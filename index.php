@@ -117,7 +117,7 @@ function Hijos($arregloFichas,$turno,$nivel,$jugador){
 						$hijoTemporal[]=llenarHorizontalIzquierda($arregloFichas,$turno,$fila,$columna-1);
 						$hijoTemporal[]=$fila;
 						$hijoTemporal[]=$nuevaColumna;
-						$hijoTemporal[]=10;
+						$hijoTemporal[]=Heuristica($hijoTemporal[0],$jugador);
 						$hijoTemporal[]=$nivel+1;
 						$hijos[]=$hijoTemporal;
 					}
@@ -133,7 +133,7 @@ function Hijos($arregloFichas,$turno,$nivel,$jugador){
 						$hijoTemporal[]=llenarHorizontalDerecha($arregloFichas,$turno,$fila,$columna+1);
 						$hijoTemporal[]=$fila;
 						$hijoTemporal[]=$nuevaColumna;
-						$hijoTemporal[]=10;
+						$hijoTemporal[]=Heuristica($hijoTemporal[0],$jugador);
 						$hijoTemporal[]=$nivel+1;
 						$hijos[]=$hijoTemporal;
 					}
@@ -149,7 +149,7 @@ function Hijos($arregloFichas,$turno,$nivel,$jugador){
 						$hijoTemporal[]=llenarDiagonalArribaIzquierda($arregloFichas,$turno,$fila-1,$columna-1);
 						$hijoTemporal[]=$columna+$nuevaFila-$fila;
 						$hijoTemporal[]=$nuevaFila;
-						$hijoTemporal[]=10;
+						$hijoTemporal[]=Heuristica($hijoTemporal[0],$jugador);
 						$hijoTemporal[]=$nivel+1;
 						$hijos[]=$hijoTemporal;
 					}
@@ -162,7 +162,7 @@ function Hijos($arregloFichas,$turno,$nivel,$jugador){
 						$hijoTemporal[]=llenarDiagonalArribaDerecha($arregloFichas,$turno,$fila-1,$columna+1);
 						$hijoTemporal[]=$columna-$nuevaFila+$fila;
 						$hijoTemporal[]=$nuevaFila;
-						$hijoTemporal[]=10;
+						$hijoTemporal[]=Heuristica($hijoTemporal[0],$jugador);
 						$hijoTemporal[]=$nivel+1;
 						$hijos[]=$hijoTemporal;
 					}
@@ -175,7 +175,7 @@ function Hijos($arregloFichas,$turno,$nivel,$jugador){
 						$hijoTemporal[]=llenarDiagonalAbajoIzquierda($arregloFichas,$turno,$fila+1,$columna-1);
 						$hijoTemporal[]=$columna-$nuevaFila+$fila;
 						$hijoTemporal[]=$nuevaFila;
-						$hijoTemporal[]=10;
+						$hijoTemporal[]=Heuristica($hijoTemporal[0],$jugador);
 						$hijoTemporal[]=$nivel+1;
 						$hijos[]=$hijoTemporal;
 					}
@@ -188,7 +188,7 @@ function Hijos($arregloFichas,$turno,$nivel,$jugador){
 						$hijoTemporal[]=llenarDiagonalAbajoDerecha($arregloFichas,$turno,$fila+1,$columna+1);
 						$hijoTemporal[]=$columna+$nuevaFila-$fila;
 						$hijoTemporal[]=$nuevaFila;
-						$hijoTemporal[]=10;
+						$hijoTemporal[]=Heuristica($hijoTemporal[0],$jugador);
 						$hijoTemporal[]=$nivel+1;
 						$hijos[]=$hijoTemporal;
 					}
