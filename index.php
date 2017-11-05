@@ -459,9 +459,9 @@ function backtracking($raiz,$turno){
 	$lista[]=$inicio;
 	$turnoActual=$turno;
 	while($lista){
+		$nodoActual=array_shift($lista);
 		$nodoActual[]=$ID;
 		$ID++;
-		$nodoActual=array_shift($lista);
 		$visitado[]=$nodoActual;
 		if($nodoActual[4]<4){
 			if($nodoActual[4] % 2 == 0){
