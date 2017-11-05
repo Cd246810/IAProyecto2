@@ -289,6 +289,7 @@ function diagonalAbajoDerecha($arregloFichas, $turno, $fila, $columna){
 $Sucesores=Hijos($arregloFichas,$turno);
 
 foreach ($Sucesores as $hijo) {
+	echo('<br>');
 	foreach($hijo[0] as $datoFila){
 		echo('<br>');
 		//echo('<br>');
