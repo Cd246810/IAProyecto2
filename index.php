@@ -46,8 +46,9 @@ function Heuristica($arregloFichas,$turno){
 		array(-25,-50,-5,-5,-5,-5,-50,-25),
 		array(-25,-50,-5,-5,-5,-5,-50,-25),
 		array(-25,-50,-5,-5,-5,-5,-50,-25),
-		array(200,-100,-25,-25,-25,-25,-100,200),
-		array(-100,-100,-50,-50,-50,-50,-100,-100)
+		array(-100,-100,-50,-50,-50,-50,-100,-100),
+		array(200,-100,-25,-25,-25,-25,-100,200)
+		
 	);
 	$columna=0;
 	$fila=0;
@@ -55,7 +56,6 @@ function Heuristica($arregloFichas,$turno){
 		$columna=0;
 		foreach($datoFila as $dato){
 			if($dato==$turno){
-				echo("<br>Paso<br>");
 				$retorno=$retorno+$arregloValores[fila][columna];
 			}
 			$columna++;
