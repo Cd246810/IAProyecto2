@@ -55,6 +55,7 @@ function Heuristica($arregloFichas,$turno){
 		$columna=0;
 		foreach($datoFila as $dato){
 			if($dato==$turno){
+				echo("<br>Paso<br>");
 				$retorno=$retorno+$arregloValores[fila][columna];
 			}
 			$columna++;
