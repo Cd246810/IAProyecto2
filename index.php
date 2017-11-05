@@ -80,6 +80,11 @@ function Hijos($arregloFichas,$turno){
 					$nuevaColumna=horizontalIzquierda($arregloFichas,$turno,$fila,$columna-1);
 					if($nuevaColumna!=-1){
 						echo ('<br>Se puede a mover izquierda a la posicion: '.$nuevaColumna);
+						$hijoTemporal=array();
+						$hijoTemporal[]=llenarHorizontalIzquierda($arregloFichas,$turno,$fila,$columna-1);
+						$hijoTemporal[]=$nuevaFila;
+						$hijoTemporal[]=$columna;
+						$hijos[]=$hijoTemporal;
 					}
 					//if($arregloFichas[$fila][$columna-1]!=2 && $arregloFichas[$fila][$columna-1]!=turno && $arregloFichas[$fila][$columna-2]==2){
 					//	echo ('<br>Se puede mover izquierda');
@@ -89,6 +94,11 @@ function Hijos($arregloFichas,$turno){
 					$nuevaColumna=horizontalDerecha($arregloFichas,$turno,$fila,$columna+1);
 					if($nuevaColumna!=-1){
 						echo ('<br>Se puede a mover derecha a la posicion: '.$nuevaColumna);
+						$hijoTemporal=array();
+						$hijoTemporal[]=llenarHorizontalDerecha($arregloFichas,$turno,$fila,$columna+1);
+						$hijoTemporal[]=$nuevaFila;
+						$hijoTemporal[]=$columna;
+						$hijos[]=$hijoTemporal;
 					}
 					//if($arregloFichas[$fila][$columna+1]!=2 && $arregloFichas[$fila][$columna+1]!=turno && $arregloFichas[$fila][$columna+2]==2){
 					//	echo ('<br>Se puede mover derecha');
@@ -198,6 +208,18 @@ function horizontalDerecha($arregloFichas, $turno, $fila, $columna){
 	return -1;
 }
 
+function llenarHorizontalDerecha($arregloFichas, $turno, $fila, $columna){
+	$retorno=$arregloFichas;
+	while($columna<8){
+		$retorno[$fila][$columna]=$turno;
+		if($arregloFichas[$fila][$columna]==2){
+			return $retorno;
+		}
+		$columna++;
+	}
+	return $retorno;
+}
+
 function horizontalIzquierda($arregloFichas, $turno, $fila, $columna){
 	if($arregloFichas[$fila][$columna]!=$turno && $arregloFichas[$fila][$columna]!=2){
 		$columna--;
@@ -212,6 +234,18 @@ function horizontalIzquierda($arregloFichas, $turno, $fila, $columna){
 		}
 	}
 	return -1;
+}
+
+function llenarHorizontalIzquierda($arregloFichas, $turno, $fila, $columna){
+	$retorno=$arregloFichas;
+	while($columna>=0){
+		$retorno[$fila][$columna]=$turno;
+		if($arregloFichas[$fila][$columna]==2){
+			return $retorno;
+		}
+		$columna--;
+	}
+	return $retorno;
 }
 
 function diagonalArribaIzquierda($arregloFichas, $turno, $fila, $columna){
@@ -293,9 +327,6 @@ foreach ($Sucesores as $hijo) {
 	echo ('Posicion a la que se movio: '.$hijo[1].' - '.$hijo[2]);
 	foreach($hijo[0] as $datoFila){
 		echo('<br>');
-		//echo('<br>');
-		//echo ('Posicion a la que se movio: '.$hijo[1].' - '.$hijo[2]);
-		//echo('<br>');
 		foreach($datoFila as $dato){
 			echo($dato." ");
 		}
