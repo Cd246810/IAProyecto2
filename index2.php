@@ -562,6 +562,7 @@ function backtrackingRecursivo($nodoActual,$turno,$padre){
 				$turnoActual=1;
 			}
 		}
+		/*
 		if($nodoActual[4]<2){
 		echo ('<br><br>Posicion a la que se movio: '.$nodoActual[1].' - '.$nodoActual[2].' Con ponderacion= '.$nodoActual[3].' y nivel: '.$nodoActual[4]);
 		
@@ -572,6 +573,7 @@ function backtrackingRecursivo($nodoActual,$turno,$padre){
 			}
 		}
 		}
+		*/
 		$hijos=array();
 		$hijos=Hijos($nodoActual[0],$turnoActual,$nodoActual[4],$turno, $nodoActual[6]);
 		$listo=0;
