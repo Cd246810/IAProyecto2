@@ -555,12 +555,13 @@ function backtrackingRecursivo($nodoActual,$turno,$padre){
 				}
 			}
 		}
-		if(nodoActual[4]==0){
-			echo($fila.$columna;
-		}
+		
 		//echo ('<br><h1>Subio con Heuristica: '.$nodoActual[3].' y posiciones: '.$nodoActual[1].'  '.$nodoActual[2].'</h1>');
-
+		if(nodoActual[4]==0){
+			echo($fila.$columna);
+		}
 	}
+	
 	return $nodoActual;
 }
 
