@@ -1,9 +1,9 @@
 <?php
 $arregloTemporal = str_split(htmlspecialchars($_GET["estado"]) );
-echo 'Turno de ' . htmlspecialchars($_GET["turno"]) . ' con los valores: '.htmlspecialchars($_GET["estado"]).'!';
-echo('<br>');
+//echo 'Turno de ' . htmlspecialchars($_GET["turno"]) . ' con los valores: '.htmlspecialchars($_GET["estado"]).'!';
+//echo('<br>');
 $turno=htmlspecialchars($_GET["turno"]);
-echo('turno:'.$turno.'<br>');
+//echo('turno:'.$turno.'<br>');
 $filas=0;
 $columna=0;
 $maximoFilas=8;
@@ -509,7 +509,7 @@ function backtrackingRecursivo($nodoActual,$turno,$turnoActual){
 				$turnoActual=1;
 			}
 		}
-		echo ('<br><br>Posicion a la que se movio: '.$nodoActual[1].' - '.$nodoActual[2].' Con ponderacion= '.$nodoActual[3].' y nivel: '.$nodoActual[4]);
+		//echo ('<br><br>Posicion a la que se movio: '.$nodoActual[1].' - '.$nodoActual[2].' Con ponderacion= '.$nodoActual[3].' y nivel: '.$nodoActual[4]);
 
 		//foreach($nodoActual[0] as $datoFila){
 			//echo('<br>');
@@ -544,7 +544,7 @@ function backtrackingRecursivo($nodoActual,$turno,$turnoActual){
 				}
 			}
 		}
-		echo ('<br><h1>Subio con Heuristica: '.$nodoActual[3].' y posiciones: '.$nodoActual[1].'  '.$nodoActual[2].'</h1>');
+		//echo ('<br><h1>Subio con Heuristica: '.$nodoActual[3].' y posiciones: '.$nodoActual[1].'  '.$nodoActual[2].'</h1>');
 
 	}
 	return $nodoActual;
@@ -562,7 +562,8 @@ function llamarbackTrackingRecursivo($raiz,$turno){
 	$inicio[]=0;
 	$inicio[]=0;
 	$inicio[]=0;
-	backtrackingRecursivo($inicio,$turno,$turno);
+	$resultado=backtrackingRecursivo($inicio,$turno,$turno);
+	echo($resultado[1].$resultado[2]);
 }
 
 
