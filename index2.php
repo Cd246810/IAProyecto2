@@ -543,6 +543,8 @@ function backtrackingRecursivo($nodoActual,$turno,$turnoActual){
 				}
 			}
 		}
+		echo ('<br><h1>Subio con Heuristica: '.$nodoActual[3].' y posiciones: '.$nodoActual[1].'  '.$nodoActual[2].'</h1>');
+
 	}
 	return $nodoActual;
 }
