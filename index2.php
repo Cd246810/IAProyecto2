@@ -509,15 +509,15 @@ function backtrackingRecursivo($nodoActual,$turno,$padre){
 				$turnoActual=1;
 			}
 		}
-		//echo ('<br><br>Posicion a la que se movio: '.$nodoActual[1].' - '.$nodoActual[2].' Con ponderacion= '.$nodoActual[3].' y nivel: '.$nodoActual[4]);
-		/*
+		echo ('<br><br>Posicion a la que se movio: '.$nodoActual[1].' - '.$nodoActual[2].' Con ponderacion= '.$nodoActual[3].' y nivel: '.$nodoActual[4]);
+		
 		foreach($nodoActual[0] as $datoFila){
 			echo('<br>');
 			foreach($datoFila as $dato){
 				echo($dato." ");
 			}
 		}
-		*/
+		
 		$hijos=array();
 		$hijos=Hijos($nodoActual[0],$turnoActual,$nodoActual[4],$turno, $nodoActual[6]);
 		$listo=0;
