@@ -497,10 +497,10 @@ function backtracking($raiz,$turno){
 
 //Max, mini, max
 
-function backtrackingRecursivo($nodoActual,$turno,$turnoActual){
+function backtrackingRecursivo($nodoActual,$turno,$padre){
 	if($nodoActual[4]<2){
 		$nodoActual[]=0;
-		if($nodoActual[4] % 2 == 0){
+		if($nodoActual[4] % 2 == 0||$nodoActual[4]==0){
 			$turnoActual=$turno;
 		}else{
 			if($turno==1){
@@ -522,7 +522,7 @@ function backtrackingRecursivo($nodoActual,$turno,$turnoActual){
 		$hijos=Hijos($nodoActual[0],$turnoActual,$nodoActual[4],$turno, $nodoActual[6]);
 		$listo=0;
 		foreach ($hijos as $hijo) {
-			$temporal=backtrackingRecursivo($hijo,$turno,$turnoActual);
+			$temporal=backtrackingRecursivo($hijo,$turno,$padre);
 			if($listo==0){
 				$nodoActual[3]=$temporal[3];
 				$listo=1;
