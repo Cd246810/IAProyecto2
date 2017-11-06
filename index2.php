@@ -522,30 +522,41 @@ function backtrackingRecursivo($nodoActual,$turno,$padre){
 		$hijos=array();
 		$hijos=Hijos($nodoActual[0],$turnoActual,$nodoActual[4],$turno, $nodoActual[6]);
 		$listo=0;
+		$fila=0;
+		$columna=0;
 		foreach ($hijos as $hijo) {
 			if($hijo[4]<5){
 				$temporal=backtrackingRecursivo($hijo,$turno,$padre);
 				if($listo==0){
 					$nodoActual[3]=$temporal[3];
 					$listo=1;
-					$nodoActual[1]=$temporal[1];
-					$nodoActual[2]=$temporal[2];
+					$fila=$temporal[1];
+					$columna=$temporal[2];
+					//$nodoActual[1]=$temporal[1];
+					//$nodoActual[2]=$temporal[2];
 				}else{
 					if($nodoActual[4] % 2 == 0){
 						if($nodoActual[3]<$temporal[3]){
 							$nodoActual[3]=$temporal[3];
-							$nodoActual[1]=$temporal[1];
-							$nodoActual[2]=$temporal[2];
+							$fila=$temporal[1];
+							$columna=$temporal[2];
+							//$nodoActual[1]=$temporal[1];
+							//$nodoActual[2]=$temporal[2];
 						}
 					}else{
 						if($nodoActual[3]>$temporal[3]){
 							$nodoActual[3]=$temporal[3];
-							$nodoActual[1]=$temporal[1];
-							$nodoActual[2]=$temporal[2];
+							$fila=$temporal[1];
+							$columna=$temporal[2];
+							//$nodoActual[1]=$temporal[1];
+							//$nodoActual[2]=$temporal[2];
 						}
 					}
 				}
 			}
+		}
+		if(nodoActual[4]==0){
+			echo($fila.$columna;
 		}
 		//echo ('<br><h1>Subio con Heuristica: '.$nodoActual[3].' y posiciones: '.$nodoActual[1].'  '.$nodoActual[2].'</h1>');
 
@@ -566,7 +577,7 @@ function llamarbackTrackingRecursivo($raiz,$turno){
 	$inicio[]=0;
 	$inicio[]=0;
 	$resultado=backtrackingRecursivo($inicio,$turno,$turno);
-	echo($resultado[1].$resultado[2]);
+	//echo($resultado[1].$resultado[2]);
 }
 
 
