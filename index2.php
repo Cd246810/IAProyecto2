@@ -523,7 +523,7 @@ function backtrackingRecursivo($nodoActual,$turno,$padre){
 		$hijos=Hijos($nodoActual[0],$turnoActual,$nodoActual[4],$turno, $nodoActual[6]);
 		$listo=0;
 		foreach ($hijos as $hijo) {
-			if($hijo[4]<2){
+			if($hijo[4]<5){
 				$temporal=backtrackingRecursivo($hijo,$turno,$padre);
 				if($listo==0){
 					$nodoActual[3]=$temporal[3];
