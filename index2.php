@@ -555,7 +555,9 @@ function backtrackingRecursivo($nodoActual,$turno,$padre){
 				}
 			}
 		}
-		
+		if($nodoActual[4]==0){
+			echo('<br>HO<br>');
+		}
 		echo ('<br><h1>Nivel:'.$nodoActual[4].' Subio con Heuristica: '.$nodoActual[3].' y posiciones: '.$nodoActual[1].'  '.$nodoActual[2].'</h1>');
 	}
 	
