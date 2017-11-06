@@ -150,8 +150,8 @@ function Hijos($arregloFichas,$turno,$nivel,$jugador,$padre){
 						//echo ('<br>Posicion: '.$columna.' '.$fila.' Se puede a mover en diagonal arriba izquierda a la posicion: '.($columna+$nuevaFila-$fila).' '.$nuevaFila);
 						$hijoTemporal=array();
 						$hijoTemporal[]=llenarDiagonalArribaIzquierda($arregloFichas,$turno,$fila-1,$columna-1);
-						$hijoTemporal[]=$columna+$nuevaFila-$fila;
 						$hijoTemporal[]=$nuevaFila;
+						$hijoTemporal[]=$columna+$nuevaFila-$fila;
 						$hijoTemporal[]=Heuristica($hijoTemporal[0],$jugador);
 						$hijoTemporal[]=$nivel+1;
 						$hijoTemporal[]=$padre;
@@ -164,8 +164,8 @@ function Hijos($arregloFichas,$turno,$nivel,$jugador,$padre){
 						//echo ('<br>Posicion: '.$columna.' '.$fila.' Se puede a mover en diagonal arriba derecha a la posicion: '.($columna-$nuevaFila+$fila).' '.$nuevaFila);
 						$hijoTemporal=array();
 						$hijoTemporal[]=llenarDiagonalArribaDerecha($arregloFichas,$turno,$fila-1,$columna+1);
-						$hijoTemporal[]=$columna-$nuevaFila+$fila;
 						$hijoTemporal[]=$nuevaFila;
+						$hijoTemporal[]=$columna-$nuevaFila+$fila;
 						$hijoTemporal[]=Heuristica($hijoTemporal[0],$jugador);
 						$hijoTemporal[]=$nivel+1;
 						$hijoTemporal[]=$padre;
@@ -178,8 +178,8 @@ function Hijos($arregloFichas,$turno,$nivel,$jugador,$padre){
 						//echo ('<br>Posicion: '.$columna.' '.$fila.' Se puede a mover en diagonal abajo izquierda a la posicion: '.($columna-$nuevaFila+$fila).' '.$nuevaFila);
 						$hijoTemporal=array();
 						$hijoTemporal[]=llenarDiagonalAbajoIzquierda($arregloFichas,$turno,$fila+1,$columna-1);
-						$hijoTemporal[]=$columna-$nuevaFila+$fila;
 						$hijoTemporal[]=$nuevaFila;
+						$hijoTemporal[]=$columna-$nuevaFila+$fila;
 						$hijoTemporal[]=Heuristica($hijoTemporal[0],$jugador);
 						$hijoTemporal[]=$nivel+1;
 						$hijoTemporal[]=$padre;
@@ -192,8 +192,8 @@ function Hijos($arregloFichas,$turno,$nivel,$jugador,$padre){
 						//echo ('<br>Posicion: '.$columna.' '.$fila.' Se puede a mover en diagonal abajo derecha a la posicion: '.($columna+$nuevaFila-$fila).' '.$nuevaFila);
 						$hijoTemporal=array();
 						$hijoTemporal[]=llenarDiagonalAbajoDerecha($arregloFichas,$turno,$fila+1,$columna+1);
-						$hijoTemporal[]=$columna+$nuevaFila-$fila;
 						$hijoTemporal[]=$nuevaFila;
+						$hijoTemporal[]=$columna+$nuevaFila-$fila;
 						$hijoTemporal[]=Heuristica($hijoTemporal[0],$jugador);
 						$hijoTemporal[]=$nivel+1;
 						$hijoTemporal[]=$padre;
@@ -509,7 +509,7 @@ function backtrackingRecursivo($nodoActual,$turno,$padre){
 				$turnoActual=1;
 			}
 		}
-		
+		/*
 		echo ('<br><br>Posicion a la que se movio: '.$nodoActual[1].' - '.$nodoActual[2].' Con ponderacion= '.$nodoActual[3].' y nivel: '.$nodoActual[4]);
 		
 		foreach($nodoActual[0] as $datoFila){
@@ -518,7 +518,7 @@ function backtrackingRecursivo($nodoActual,$turno,$padre){
 				echo($dato." ");
 			}
 		}
-		
+		*/
 		$hijos=array();
 		$hijos=Hijos($nodoActual[0],$turnoActual,$nodoActual[4],$turno, $nodoActual[6]);
 		$listo=0;
