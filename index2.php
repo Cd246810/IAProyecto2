@@ -30,12 +30,12 @@ for($numeroTemporal=0;$numeroTemporal<count($arregloTemporal);$numeroTemporal++)
 	//echo('<br>'.$arregloTemporal[$numeroTemporal]);
 }
 
-foreach($arregloFichas as $datoFila){
-	echo('<br>');
-	foreach($datoFila as $dato){
-		echo($dato." ");
-	}
-}
+//foreach($arregloFichas as $datoFila){
+//	echo('<br>');
+//	foreach($datoFila as $dato){
+//		echo($dato." ");
+//	}
+//}
 
 function Heuristica($arregloFichas,$turno){
 	$retorno=0;
@@ -443,7 +443,7 @@ function llenarDiagonalAbajoDerecha($arregloFichas, $turno, $fila, $columna){
 	}
 	return $retorno;
 }
-
+/*
 function backtracking($raiz,$turno){
 	$nivel=0;
 	$lista=array();
@@ -493,6 +493,7 @@ function backtracking($raiz,$turno){
 		}
 	}
 }
+*/
 
 //Max, mini, max
 
