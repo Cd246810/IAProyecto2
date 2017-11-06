@@ -498,7 +498,7 @@ function backtracking($raiz,$turno){
 //Max, mini, max
 
 function backtrackingRecursivo($nodoActual,$turno,$padre){
-	if($nodoActual[4]<2){
+	if($nodoActual[4]<5){
 		$nodoActual[]=0;
 		if($nodoActual[4] % 2 == 0||$nodoActual[4]==0){
 			$turnoActual=$turno;
