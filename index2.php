@@ -563,7 +563,7 @@ function llamarbackTrackingRecursivo($raiz,$turno){
 	$inicio[]=0;
 	$inicio[]=0;
 	$resultado=backtrackingRecursivo($inicio,$turno,$turno);
-	echo($resultado[1].$resultado[2]);
+	echo($resultado[2].$resultado[1]);
 }
 
 
