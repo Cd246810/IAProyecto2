@@ -522,24 +522,26 @@ function backtrackingRecursivo($nodoActual,$turno,$padre){
 		$hijos=Hijos($nodoActual[0],$turnoActual,$nodoActual[4],$turno, $nodoActual[6]);
 		$listo=0;
 		foreach ($hijos as $hijo) {
-			$temporal=backtrackingRecursivo($hijo,$turno,$padre);
-			if($listo==0){
-				$nodoActual[3]=$temporal[3];
-				$listo=1;
-				$nodoActual[1]=$temporal[1];
-				$nodoActual[2]=$temporal[2];
-			}else{
-				if($nodoActual[4] % 2 == 0){
-					if($nodoActual[3]<$temporal[3]){
-						$nodoActual[3]=$temporal[3];
-						$nodoActual[1]=$temporal[1];
-						$nodoActual[2]=$temporal[2];
-					}
+			if($hijo[4]<2){
+				$temporal=backtrackingRecursivo($hijo,$turno,$padre);
+				if($listo==0){
+					$nodoActual[3]=$temporal[3];
+					$listo=1;
+					$nodoActual[1]=$temporal[1];
+					$nodoActual[2]=$temporal[2];
 				}else{
-					if($nodoActual[3]>$temporal[3]){
-						$nodoActual[3]=$temporal[3];
-						$nodoActual[1]=$temporal[1];
-						$nodoActual[2]=$temporal[2];
+					if($nodoActual[4] % 2 == 0){
+						if($nodoActual[3]<$temporal[3]){
+							$nodoActual[3]=$temporal[3];
+							$nodoActual[1]=$temporal[1];
+							$nodoActual[2]=$temporal[2];
+						}
+					}else{
+						if($nodoActual[3]>$temporal[3]){
+							$nodoActual[3]=$temporal[3];
+							$nodoActual[1]=$temporal[1];
+							$nodoActual[2]=$temporal[2];
+						}
 					}
 				}
 			}
