@@ -80,7 +80,7 @@ function Heuristica($arregloFichas,$turno){
 
 function Hijos($arregloFichas,$turno,$nivel,$jugador,$padre){
 	$hijos=array();
-	$filas=0;
+	$fila=0;
 	$columna=0;
 	foreach($arregloFichas as $datoFila){
 		//echo('<br>');
