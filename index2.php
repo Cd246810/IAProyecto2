@@ -347,13 +347,15 @@ function llenarHorizontalDerecha($arregloFichas, $turno, $fila, $columna){
 
 function horizontalIzquierda($arregloFichas, $turno, $fila, $columna){
 	if($arregloFichas[$fila][$columna]!=$turno && $arregloFichas[$fila][$columna]!=2){
+		echo("<br> Esta en posicion: ".$fila.' - '.$columna.' en el turno: '.$turno);
 		$columna--;
 		while($columna>=0){
+			echo("	Intenga comer a: ".$fila.' - '.$columna.'	');
 			if($arregloFichas[$fila][$columna]==$turno){
 				return -1;
 			}
 			if($arregloFichas[$fila][$columna]==2){
-				echo("Encuentra:");
+				echo(" Encuentra:");
 				return $columna;
 			}
 			$columna--;
