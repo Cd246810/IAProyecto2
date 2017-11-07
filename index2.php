@@ -563,7 +563,7 @@ function backtrackingRecursivo($nodoActual,$turno,$padre){
 			}
 		}
 		
-		if($nodoActual[4]<2){
+		if($nodoActual[4]<3){
 		echo ('<br><br>Posicion a la que se movio: '.$nodoActual[1].' - '.$nodoActual[2].' Con ponderacion= '.$nodoActual[3].' y nivel: '.$nodoActual[4]);
 		
 		foreach($nodoActual[0] as $datoFila){
