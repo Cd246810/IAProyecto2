@@ -346,7 +346,6 @@ function llenarHorizontalDerecha($arregloFichas, $turno, $fila, $columna){
 }
 
 function horizontalIzquierda($arregloFichas, $turno, $fila, $columna){
-	echo("Llega Aqui:");
 	if($arregloFichas[$fila][$columna]!=$turno && $arregloFichas[$fila][$columna]!=2){
 		$columna--;
 		while($columna>=0){
@@ -354,6 +353,7 @@ function horizontalIzquierda($arregloFichas, $turno, $fila, $columna){
 				return -1;
 			}
 			if($arregloFichas[$fila][$columna]==2){
+				echo("Encuentra:");
 				return $columna;
 			}
 			$columna--;
