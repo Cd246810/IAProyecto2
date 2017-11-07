@@ -53,7 +53,7 @@ function Heuristica($arregloFichas,$turno){
 	*/
 	//Arrego2
 	$arregloValores=array(
-		array(50,-30,15,15,15,15,-30,50),
+		array(50,-30,15,15,15,15,-30,50),  //Esquinas estaba en 40, vecinos de esquinos estaban en -20
 		array(-30,-30,-10,-10,-10,-10,-30,-30),
 		array(15,-10,5,5,5,5,-10,15),
 		array(15,-10,5,5,5,5,-10,15),
